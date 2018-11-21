@@ -18,7 +18,7 @@ public class ParkingValidationTest {
 
     @Before
     public void setUp() throws Exception {
-        parking = new Parking(ticketId);
+        parking = new Parking();
         parkingValidation = new ParkingValidation(parking);
     }
 

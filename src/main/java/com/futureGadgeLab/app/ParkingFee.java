@@ -1,12 +1,10 @@
 package com.futureGadgeLab.app;
 
-import com.futureGadgeLab.service.ParkingRequirements;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingFee implements ParkingRequirements {
+public class ParkingFee {
 
     private int ticketId, duration;
 
@@ -26,12 +24,6 @@ public class ParkingFee implements ParkingRequirements {
         tariffCategory.put(5, BigDecimal.valueOf(100));
     }
 
-    @Override
-    public BigDecimal tariff() {
-        return null;
-    }
-
-    @Override
     public boolean getTicketId() {
 
         if (ticketId == parking.getTicketId()){

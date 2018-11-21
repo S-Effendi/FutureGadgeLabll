@@ -17,7 +17,7 @@ public class ParkingFeeTest {
 
     @Before
     public void setUp() throws Exception {
-        parking = new Parking(ticketId);
+        parking = new Parking();
         parkingFee = new ParkingFee(parking);
     }
 

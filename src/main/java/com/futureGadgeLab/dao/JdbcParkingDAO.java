@@ -16,7 +16,7 @@ import java.util.List;
  * Used to store and retrieve data from the database
  */
 
-public abstract class JdbcParkingDAO implements ParkingDAO {
+public class JdbcParkingDAO implements ParkingDAO {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
@@ -41,7 +41,7 @@ public abstract class JdbcParkingDAO implements ParkingDAO {
 
     @Override
     public Parking createParking(int ticketId) {
-        this.jdbcTemplate.update("INSERT INTO Parking(ticketId, entryTime, exitTime, fee) VALUES (?, ?)", new Object[]{});
+        this.jdbcTemplate.update("INSERT INTO Parking(ticketId, entryTime) VALUES (?, ?)", new Object[]{});
         return new Parking();
     }
 
@@ -59,13 +59,13 @@ public abstract class JdbcParkingDAO implements ParkingDAO {
 
     @Override
     public Parking saveParking(Parking parking) {
-        this.jdbcTemplate.update("INSERT INTO Parking WHERE ticketId = ?", new Object[]{});
+        this.jdbcTemplate.update("INSERT INTO Parking(ticketId, entryTime, exitTime, fee) VALUES (?, ?, ?, ?)", new Object[]{});
         return new Parking();
     }
 
     @Override
     public Parking updateParking(Integer ticketId) {
-        this.jdbcTemplate.update("UPDATE from parking WHERE ticketId = ?", new Object[]{});
+        this.jdbcTemplate.update("UPDATE parking SET exitTime = ?, fee = ? WHERE ticketId = ?", new Object[]{});
         return new Parking();
     }
 

@@ -15,7 +15,7 @@ public class ParkingServiceImplementation implements ParkingService {
     }
 
     @Override
-    public Parking create(int ticketId) {
+    public Parking createParking(int ticketId) {
         return jdbcParkingDAO.createParking(ticketId);
     }
 

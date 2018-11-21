@@ -1,6 +1,9 @@
 package com.futureGadgeLab.app;
 
+import com.futureGadgeLab.dao.JdbcParkingDAO;
 import com.futureGadgeLab.rest.FglRestService;
+import com.futureGadgeLab.service.Implementaion.ParkingServiceImplementation;
+
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +16,11 @@ public class FglApplication  extends Application{
     private Set<Object> s_instance = new HashSet<Object>();
 
     public FglApplication() {
-        s_instance.add(new FglRestService());
+
+//        List<String> myList = new ArrayList<>();
+//        new ArrayList<String>() myList;
+
+        s_instance.add(new FglRestService(new ParkingServiceImplementation(new JdbcParkingDAO())));
     }
 
     @Override

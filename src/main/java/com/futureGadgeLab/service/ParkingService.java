@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ParkingService {
 
-    Parking create(int ticketId);
+    Parking createParking(int ticketId);
     Parking readParking(int ticketId);
     List<Parking> readAllParkings();
 

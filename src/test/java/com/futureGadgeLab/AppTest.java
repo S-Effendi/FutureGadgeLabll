@@ -13,12 +13,13 @@ import java.text.SimpleDateFormat;
 public class AppTest {
     public static void main(String args[]) throws ParseException {
 
+        Parking parking;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss"); //Date format string is passed as an argument to the Date format object
         ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
 
 
-        JdbcParkingDAO dao = (JdbcParkingDAO) context.getBean("jpdao");
-        int stat = dao.saveParking(new Parking(16160, 1, simpleDateFormat.parse("2010-07-16 19:19:00"), simpleDateFormat.parse("2010-07-16 19:19:00"), BigDecimal.valueOf(10.50)));
+        JdbcParkingDAO dao = (JdbcParkingDAO) context.getBean("jdbcParkingDao");
+        Parking stat = dao.saveParking(new Parking(16160, 1, simpleDateFormat.parse("2010-07-16 19:19:00"), simpleDateFormat.parse("2010-07-16 19:19:00"), BigDecimal.valueOf(10.50)));
         System.out.println(stat);
     }
 }
