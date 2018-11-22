@@ -17,6 +17,7 @@ public class FglApplication  extends Application{
 
     public FglApplication() {
 
+
 //        List<String> myList = new ArrayList<>();
 //        new ArrayList<String>() myList;
 

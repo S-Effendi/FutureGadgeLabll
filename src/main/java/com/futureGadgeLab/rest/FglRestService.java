@@ -14,36 +14,48 @@ public class FglRestService {
     private ParkingService parkingService;
     private JdbcParkingDAO jdbcParkingDAO;
 
+    public FglRestService() {
+
+    }
+
     public FglRestService(ParkingService parkingService) {
         this.parkingService = parkingService;
     }
 
-    @GET
+    public void setParkingService(String parkingService) {
+    }
+
+    @Path("/parking")
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Parking createParking(int ticketId) {
         return parkingService.createParking(ticketId);
     }
 
+    @Path("/parking/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Parking readParking(int ticketId){
+    public Parking readParking(@PathParam("id") int ticketId){
         return parkingService.readParking(ticketId);
     }
 
+    @Path("/parking")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Parking> readAllParkings(){
         return parkingService.readAllParkings();
     }
 
-    @GET
+    @Path("/parking")
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Parking saveParking(Parking parking) {
         return parkingService.saveParking(parking);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/parking")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
     public Parking updateParking(int ticketId) {
         return parkingService.updateParking(ticketId);
     }

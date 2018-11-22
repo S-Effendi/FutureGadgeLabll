@@ -10,9 +10,16 @@ public class ParkingServiceImplementation implements ParkingService {
 
     private JdbcParkingDAO jdbcParkingDAO;
 
+    public ParkingServiceImplementation() {
+    }
+
     public ParkingServiceImplementation(JdbcParkingDAO jdbcParkingDAO) {
         this.jdbcParkingDAO = jdbcParkingDAO;
     }
+
+    public void setJdbcParkingDao(JdbcParkingDAO jdbcParkingDao) {
+    }
+
 
     @Override
     public Parking createParking(int ticketId) {
@@ -38,5 +45,4 @@ public class ParkingServiceImplementation implements ParkingService {
     public Parking updateParking(Integer ticketId) {
         return jdbcParkingDAO.updateParking(ticketId);
     }
-
 }
