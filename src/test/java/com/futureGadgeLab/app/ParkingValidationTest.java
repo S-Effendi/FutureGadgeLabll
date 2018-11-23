@@ -41,7 +41,7 @@ public class ParkingValidationTest {
     public void testAvailableSpaces(){
         int result = parkingValidation.getAvailableSpaces();
 
-        assertEquals(49, result);
+        assertEquals(50, result);
     }
 
     @Test
