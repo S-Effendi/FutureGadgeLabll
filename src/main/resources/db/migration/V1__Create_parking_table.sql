@@ -5,5 +5,4 @@ create table Ticket (
   exitTime timestamp,
   fee float,
 
-  jdbcTemplate.execute(hsql);
 );

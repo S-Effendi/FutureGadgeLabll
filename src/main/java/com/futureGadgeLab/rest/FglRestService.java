@@ -28,8 +28,8 @@ public class FglRestService {
     @Path("/parking")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Parking createParking(int ticketId) {
-        return parkingService.createParking(ticketId);
+    public Parking createParking() {
+        return parkingService.createParking();
     }
 
     @Path("/parking/{id}")

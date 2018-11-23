@@ -41,13 +41,8 @@ public class JdbcParkingDAO implements ParkingDAO {
     }
 
     @Override
-    public void executeStatement() {
-        this.jdbcTemplate.execute("CREATE table Ticket(ticketId integer)");
-    }
-
-    @Override
-    public Parking createParking(int ticketId) {
-        this.jdbcTemplate.update("INSERT INTO Ticket(ticketId, entryTime) VALUES (?, ?)", new Object[]{});
+    public Parking createParking() {
+        this.jdbcTemplate.update("INSERT INTO Ticket(lotId, entryTime) VALUES (1, CURRENT_TIMESTAMP )", new Object[]{});
         return new Parking();
     }
 
@@ -59,13 +54,13 @@ public class JdbcParkingDAO implements ParkingDAO {
 
     @Override
     public List<Parking> readAllParkings() {
-        return this.jdbcTemplate.query("SELECT ticketId, entryTime, exitTime, fee FROM Ticket",
+        return this.jdbcTemplate.query("SELECT ticketId, lotId, entryTime, exitTime, fee FROM Ticket",
                 new ParkingMapper());
     }
 
     @Override
     public Parking saveParking(Parking parking) {
-        this.jdbcTemplate.update("INSERT INTO Ticket(ticketId, entryTime, exitTime, fee) VALUES (?, ?, ?, ?)", new Object[]{});
+        this.jdbcTemplate.update("INSERT INTO Ticket(ticketId, lotId, entryTime, exitTime, fee) VALUES (?, ?, ?, ?)", new Object[]{});
         return new Parking();
     }
 

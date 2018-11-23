@@ -6,7 +6,7 @@ public class Parking {
     private int ticketId, lotId;
     private Date entryTime, exitTime;
     private BigDecimal fee;
-    protected Boolean ticketIssued;
+    protected Boolean ticketIssued = false;
 
     /**
      * Used to establish attributes within a row in the Parking table

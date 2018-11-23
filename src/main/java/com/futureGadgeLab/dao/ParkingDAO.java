@@ -12,8 +12,7 @@ import java.util.List;
 
 public interface ParkingDAO {
 
-    public void executeStatement();
-    public Parking createParking(int ticketId);
+    public Parking createParking();
     public Parking readParking(Integer ticketId);
     public List<Parking> readAllParkings();
     public Parking saveParking(Parking parking);

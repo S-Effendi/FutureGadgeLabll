@@ -30,8 +30,8 @@ public class ParkingServiceImplementation implements ParkingService {
     }
 
     @Override
-    public Parking createParking(int ticketId) {
-        return jdbcParkingDAO.createParking(ticketId);
+    public Parking createParking() {
+        return jdbcParkingDAO.createParking();
     }
 
     @Override
@@ -51,6 +51,8 @@ public class ParkingServiceImplementation implements ParkingService {
 
     @Override
     public void updateParking(Parking parking) {
+        parkingFee = new ParkingFee(parking);
+
         BigDecimal fee = parkingFee.getTariff();
         Timestamp exitTime = new Timestamp(parking.getExitTime().getTime());
         jdbcParkingDAO.updateParking(parking.getTicketId(), exitTime, fee);

@@ -34,7 +34,6 @@ public class ParkingFee {
 
     public int getDuration(){
 
-        duration = 135;
         if (parking.ticketIssued) {
 
             int entryTimeHour = parking.getEntryTime().getHours();

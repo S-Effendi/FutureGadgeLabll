@@ -1,4 +1,4 @@
-package com.futureGadgeLab;
+package com.futureGadgeLab.service;
 
 import com.futureGadgeLab.rest.FglRestService;
 import org.jboss.resteasy.core.Dispatcher;
