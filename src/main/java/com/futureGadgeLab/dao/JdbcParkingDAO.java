@@ -6,8 +6,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -21,12 +23,16 @@ public class JdbcParkingDAO implements ParkingDAO {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    public JdbcParkingDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Autowired
@@ -64,8 +70,8 @@ public class JdbcParkingDAO implements ParkingDAO {
     }
 
     @Override
-    public Parking updateParking(Integer ticketId) {
-        this.jdbcTemplate.update("UPDATE parking SET exitTime = ?, fee = ? WHERE ticketId = ?", new Object[]{});
+    public Parking updateParking(Integer ticketId, Timestamp exitTime, BigDecimal fee) {
+        this.jdbcTemplate.update("UPDATE parking SET exitTime = ?, fee = ? WHERE ticketId = ?",exitTime ,fee, ticketId) ;
         return new Parking();
     }
 

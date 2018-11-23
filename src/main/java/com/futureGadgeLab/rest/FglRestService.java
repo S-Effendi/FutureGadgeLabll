@@ -39,31 +39,25 @@ public class FglRestService {
         return parkingService.readParking(ticketId);
     }
 
-    @Path("/parking")
+    @Path("/parking/allParkings")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Parking> readAllParkings(){
         return parkingService.readAllParkings();
     }
 
-    @Path("/parking")
+    @Path("/parking/saved")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Parking saveParking(Parking parking) {
         return parkingService.saveParking(parking);
     }
 
-    @Path("/parking")
+    @Path("/parking/update")
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Parking updateParking(int ticketId) {
-        return parkingService.updateParking(ticketId);
+    @Consumes("application/json")
+    public void updateParking(Parking parking) {
+        parkingService.updateParking(parking);
     }
-
-//    @Path("/fgl")
-//    @GET
-//    public Response fgl() {
-//        return Response.status(200).entity("Future Gadget Lab").build();
-//    }
 
 }

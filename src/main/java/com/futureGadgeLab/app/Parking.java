@@ -20,6 +20,13 @@ public class Parking {
         this.ticketId = ticketId;
     }
 
+    public Parking(int ticketId, int lotId, Date entryTime, Date exitTime){
+        this.ticketId = ticketId;
+        this.lotId = lotId;
+        this.entryTime = entryTime;
+        this.exitTime = exitTime;
+    }
+
     public Parking(int ticketId, int lotId, Date entryTime, Date exitTime, BigDecimal fee){
         this.ticketId = ticketId;
         this.lotId = lotId;

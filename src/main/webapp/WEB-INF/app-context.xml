@@ -12,21 +12,21 @@
     </bean>
 
     <bean id ="jdbcTemplate" class = "org.springframework.jdbc.core.JdbcTemplate">
-        <property name = "dataSource" ref="dataSource"></property>
+        <constructor-arg ref="dataSource"></constructor-arg>
     </bean>
 
     <bean id ="jdbcParkingDao" class="com.futureGadgeLab.dao.JdbcParkingDAO">
-        <property name = "jdbcTemplate" ref="jdbcTemplate"></property>
+        <constructor-arg ref="jdbcTemplate"></constructor-arg>
     </bean>
 
 
-    <bean id ="parkingServiceImplementation" class="com.futureGadgeLab.service.Implementaion.ParkingServiceImplementation">
-        <property name = "jdbcParkingDao" ref="jdbcParkingDao"></property>
+    <bean id ="parkingService" class="com.futureGadgeLab.service.Implementaion.ParkingServiceImplementation">
+        <constructor-arg ref="jdbcParkingDao"></constructor-arg>
     </bean>
 
 
     <bean id ="fglRestService" class="com.futureGadgeLab.rest.FglRestService">
-        <property name = "parkingService" ref="parkingService"></property>
+        <constructor-arg ref="parkingService"/>
     </bean>
 
     <bean id="parking" class = "com.futureGadgeLab.app.Parking">
@@ -36,5 +36,6 @@
     <!--<constructor-arg index="3" value="Thu Nov 22 10:13:18 CAT 2018"/>-->
     <!--<constructor-arg index="4" value="10.50"/>-->
     </bean>
-    <bean id="parkingService" class="java.lang.String"/>
+
+    <import resource="classpath:springmvc-resteasy.xml"/>
 </beans>

@@ -1,14 +1,19 @@
 package com.futureGadgeLab.service.Implementaion;
 
 import com.futureGadgeLab.app.Parking;
+import com.futureGadgeLab.app.ParkingFee;
 import com.futureGadgeLab.dao.JdbcParkingDAO;
 import com.futureGadgeLab.service.ParkingService;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class ParkingServiceImplementation implements ParkingService {
 
     private JdbcParkingDAO jdbcParkingDAO;
+
+    private ParkingFee parkingFee;
 
     public ParkingServiceImplementation() {
     }
@@ -20,6 +25,9 @@ public class ParkingServiceImplementation implements ParkingService {
     public void setJdbcParkingDao(JdbcParkingDAO jdbcParkingDao) {
     }
 
+    public void setParkingFee(ParkingFee parkingFee) {
+        this.parkingFee = parkingFee;
+    }
 
     @Override
     public Parking createParking(int ticketId) {
@@ -42,7 +50,9 @@ public class ParkingServiceImplementation implements ParkingService {
     }
 
     @Override
-    public Parking updateParking(Integer ticketId) {
-        return jdbcParkingDAO.updateParking(ticketId);
+    public void updateParking(Parking parking) {
+        BigDecimal fee = parkingFee.getTariff();
+        Timestamp exitTime = new Timestamp(parking.getExitTime().getTime());
+        jdbcParkingDAO.updateParking(parking.getTicketId(), exitTime, fee);
     }
 }
