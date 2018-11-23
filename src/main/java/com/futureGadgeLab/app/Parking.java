@@ -42,8 +42,7 @@ public class Parking {
         this.ticketId = ticketId;
     }
 
-    public int getLotId(int lotId){
-        return lotId; }
+    public int getLotId(int lotId){ return lotId; }
     public void setLotId(int lotId) { this.lotId = lotId; }
 
     public Date getEntryTime(){

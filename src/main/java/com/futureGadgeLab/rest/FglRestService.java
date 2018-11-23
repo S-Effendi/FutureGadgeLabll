@@ -34,7 +34,7 @@ public class FglRestService {
 
     @Path("/parking/{id}")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
     public Parking readParking(@PathParam("id") int ticketId){
         return parkingService.readParking(ticketId);
     }

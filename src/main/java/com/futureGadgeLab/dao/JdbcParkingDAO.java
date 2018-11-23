@@ -42,47 +42,47 @@ public class JdbcParkingDAO implements ParkingDAO {
 
     @Override
     public void executeStatement() {
-        this.jdbcTemplate.execute("CREATE table Parking(ticketId integer)");
+        this.jdbcTemplate.execute("CREATE table Ticket(ticketId integer)");
     }
 
     @Override
     public Parking createParking(int ticketId) {
-        this.jdbcTemplate.update("INSERT INTO Parking(ticketId, entryTime) VALUES (?, ?)", new Object[]{});
+        this.jdbcTemplate.update("INSERT INTO Ticket(ticketId, entryTime) VALUES (?, ?)", new Object[]{});
         return new Parking();
     }
 
     @Override
     public Parking readParking(Integer ticketId) {
-        return this.jdbcTemplate.queryForObject("SELECT ticketId, entryTime, exitTime, fee FROM Parking WHERE ticketId = ?",
+        return this.jdbcTemplate.queryForObject("SELECT ticketId, lotId, entryTime, exitTime, fee FROM Ticket WHERE ticketId = ?",
                 new Object[]{ticketId}, new ParkingMapper());
     }
 
     @Override
     public List<Parking> readAllParkings() {
-        return this.jdbcTemplate.query("SELECT ticketId, entryTime, exitTime, fee FROM Parking",
+        return this.jdbcTemplate.query("SELECT ticketId, entryTime, exitTime, fee FROM Ticket",
                 new ParkingMapper());
     }
 
     @Override
     public Parking saveParking(Parking parking) {
-        this.jdbcTemplate.update("INSERT INTO Parking(ticketId, entryTime, exitTime, fee) VALUES (?, ?, ?, ?)", new Object[]{});
+        this.jdbcTemplate.update("INSERT INTO Ticket(ticketId, entryTime, exitTime, fee) VALUES (?, ?, ?, ?)", new Object[]{});
         return new Parking();
     }
 
     @Override
     public Parking updateParking(Integer ticketId, Timestamp exitTime, BigDecimal fee) {
-        this.jdbcTemplate.update("UPDATE parking SET exitTime = ?, fee = ? WHERE ticketId = ?",exitTime ,fee, ticketId) ;
+        this.jdbcTemplate.update("UPDATE Ticket SET exitTime = ?, fee = ? WHERE ticketId = ?",exitTime ,fee, ticketId) ;
         return new Parking();
     }
 
     @Override
     public int deleteParking(Integer ticketId) {
-        return this.jdbcTemplate.update("DELETE from parking WHERE ticketId = ?", new Object[]{});
+        return this.jdbcTemplate.update("DELETE from Ticket WHERE ticketId = ?", new Object[]{});
     }
 
     @Override
     public void deleteAllParking() {
-        this.jdbcTemplate.update("DELETE from Parking");
+        this.jdbcTemplate.update("DELETE from Ticket");
 
     }
 
