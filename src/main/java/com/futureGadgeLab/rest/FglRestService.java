@@ -8,6 +8,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * This class represents a rest services which will be used to create, store and collect data utilizing json files.
+ *
+ */
+
 @Path("/")
 public class FglRestService {
 
